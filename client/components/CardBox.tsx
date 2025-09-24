@@ -7,7 +7,11 @@ interface CardBoxProps {
   children: ReactNode;
 }
 
-export function CardBox({ className, roleAccent = null, children }: CardBoxProps) {
+export function CardBox({
+  className,
+  roleAccent = null,
+  children,
+}: CardBoxProps) {
   return (
     <div
       className={cn(
