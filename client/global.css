@@ -5,6 +5,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .card-forged {
+    @apply rounded-md border-2 border-border/60 bg-gradient-to-b from-card to-card shadow-[0_1px_0_rgba(255,255,255,0.4)_inset,0_8px_20px_-12px_rgba(0,0,0,0.25)];
+  }
+  [data-role="admin"] .card-forged {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 10px 22px -14px rgba(30,64,175,0.6);
+  }
+  [data-role="staff"] .card-forged {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 10px 22px -14px rgba(217,119,6,0.5);
+  }
+  [data-role="client"] .card-forged {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 10px 22px -14px rgba(5,122,85,0.5);
+  }
+}
+
 @layer base {
   /**
    * Tailwind CSS theme
@@ -12,6 +27,11 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
+    --brand-500: 221 83% 53%;
+    --brand-600: 221 70% 45%;
+    --admin-accent: 221 83% 53%;
+    --staff-accent: 35 92% 51%;
+    --client-accent: 158 64% 52%;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -105,5 +125,19 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Role-driven accent binding */
+  [data-role="admin"] {
+    --accent: var(--admin-accent);
+    --ring: var(--admin-accent);
+  }
+  [data-role="staff"] {
+    --accent: var(--staff-accent);
+    --ring: var(--staff-accent);
+  }
+  [data-role="client"] {
+    --accent: var(--client-accent);
+    --ring: var(--client-accent);
   }
 }
