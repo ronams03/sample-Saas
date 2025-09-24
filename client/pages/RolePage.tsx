@@ -18,10 +18,12 @@ export default function RolePage() {
     return `${section.replace(/-/g, " ")}`;
   }, [role, section]);
 
+  const [open, setOpen] = useState(false);
+
   return (
     <div data-role={role} className="min-h-screen">
-      <Header title={title} />
-      <SidebarDrawer role={role} />
+      <Header title={title} onMenuClick={() => setOpen((v) => !v)} />
+      <SidebarDrawer role={role} open={open} onOpenChange={setOpen} />
       <main className="md:pl-72">
         <div className="mx-auto max-w-screen-2xl p-6">
           {!section || section === "dashboard" ? (
